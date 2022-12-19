@@ -51,17 +51,51 @@ void Cambio::calcular_cambio_entero_()
     }
 }
 
-
-void Cambio::calcular_cambio_decimal_() {
-    std::cout << "hola" << std::endl;
+void Cambio::calcular_cambio_decimal_()
+{
+    int dinero = 100 * dinero_decimal_;
+    int counter = 0;
+    std::pair<int, int> variable;
+    for (int i = 0; i < euros_.size(); i++)
+    {
+        if (dinero == 0)
+        {
+        }
+        else
+        {
+            while (dinero >= centimos_[i])
+            {
+                dinero -= centimos_[i];
+                counter++;
+            }
+            variable.second = counter;
+            variable.first = centimos_[i];
+            cambio_entero_.push_back(variable);
+            variable.first = 0;
+            variable.second = 0;
+            counter = 0;
+        }
+    }
 }
 void Cambio::imprimir_cambio()
 {
+    int total;
+
+    std::cout << "Solucion: ";
+
     for (auto i = 0; i < euros_.size(); i++)
     {
-        if (cambio_entero_[i].second != 0)
+        if (cambio_entero_[i].second == 1)
         {
-            std::cout << "el cambio es: " << cambio_entero_[i].second << " unidades de " << cambio_entero_[i].first<< "." << std::endl;
+            std::cout << cambio_entero_[i].first << "€ ";
+            total += 1;
+        }
+        else if (cambio_entero_[i].second != 0)
+        {
+            std::cout << cambio_entero_[i].second << "x" << cambio_entero_[i].first << "€";
+            total += cambio_entero_[i].second;
         }
     }
+    std::cout << std::endl;
+    std::cout << "Total de monedas: ";
 }
