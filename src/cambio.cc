@@ -14,16 +14,16 @@ Cambio::Cambio(float dinero_entero, float dinero_decimal)
 {
     dinero_entero_ = dinero_entero;
     dinero_decimal_ = dinero_decimal*100 - dinero_entero*100;
-    std::cout << "Dinero decimal: " << dinero_decimal_ << std::endl;
-    std::cout << "Dinero entero: " << dinero_entero_ << std::endl;
+    dinero_decimal_ = dinero_decimal_ / 100;
+
     calcular_cambio();
     imprimir_cambio();
 }
 
 void Cambio::calcular_cambio()
 {
-    calcular_cambio_decimal_();
     calcular_cambio_entero_();
+    calcular_cambio_decimal_();
 }
 
 void Cambio::calcular_cambio_entero_()
@@ -31,20 +31,20 @@ void Cambio::calcular_cambio_entero_()
     int dinero = dinero_entero_;
     int counter = 0;
     std::pair<int, int> variable;
-    for (int i = 0; i < euros_.size(); i++)
+    for (int i = 0; i < billetes_.size(); i++)
     {
         if (dinero == 0)
         {
         }
         else
         {
-            while (dinero >= euros_[i])
+            while (dinero >= billetes_[i])
             {
-                dinero -= euros_[i];
+                dinero -= billetes_[i];
                 counter++;
             }
             variable.second = counter;
-            variable.first = euros_[i];
+            variable.first = billetes_[i];
             cambio_entero_.push_back(variable);
             variable.first = 0;
             variable.second = 0;
@@ -55,23 +55,23 @@ void Cambio::calcular_cambio_entero_()
 
 void Cambio::calcular_cambio_decimal_()
 {
-    int dinero = dinero_decimal_;
+    float dinero = dinero_decimal_;
     int counter = 0;
-    std::pair<int, int> variable;
-    for (int i = 0; i < centimos_.size(); i++)
+    std::pair<float, int> variable;
+    for (int i = 0; i < monedas_.size(); i++)
     {
         if (dinero == 0)
         {
         }
         else
         {
-            while (dinero >= centimos_[i])
+            while (dinero >= monedas_[i])
             {
-                dinero -= centimos_[i];
+                dinero -= monedas_[i];
                 counter++;
             }
             variable.second = counter;
-            variable.first = centimos_[i];
+            variable.first = monedas_[i];
             cambio_decimal_.push_back(variable);
             variable.first = 0;
             variable.second = 0;
@@ -86,7 +86,7 @@ void Cambio::imprimir_cambio()
 
     std::cout << "Solucion: ";
 
-    for (auto i = 0; i < euros_.size(); i++)
+    for (auto i = 0; i < billetes_.size(); i++)
     {
         if (cambio_entero_[i].second == 1)
         {
@@ -99,24 +99,24 @@ void Cambio::imprimir_cambio()
     }
 
     
-     for (auto i = 0; i < centimos_.size(); i++)
+    for (auto i = 0; i < monedas_.size(); i++)
     {
         if (cambio_decimal_[i].second == 1)
         {
-            std::cout << cambio_decimal_[i].first << "centimos ";
+            std::cout << cambio_decimal_[i].first << "¢ ";
         }
         else if (cambio_decimal_[i].second != 0)
         {
-            std::cout << cambio_decimal_[i].second << "x" << cambio_decimal_[i].first << "centimos ";
+            std::cout << cambio_decimal_[i].second << "x" << cambio_decimal_[i].first << "¢ ";
         }
     } 
 
-    for (auto i = 0; i < euros_.size(); i++)
+    for (auto i = 0; i < billetes_.size(); i++)
     {
         total += cambio_entero_[i].second;
     }
 
-    for (auto i = 0; i < centimos_.size(); i++)
+    for (auto i = 0; i < monedas_.size(); i++)
     {
         total += cambio_decimal_[i].second;
     }
@@ -124,3 +124,4 @@ void Cambio::imprimir_cambio()
     std::cout << std::endl;
     std::cout << "Total de monedas: " << total << std::endl;
 }
+
