@@ -82,7 +82,7 @@ void Cambio::calcular_cambio_decimal_()
 
 void Cambio::imprimir_cambio()
 {
-    int total;
+    int total = 0;
 
     std::cout << "Solucion: ";
 
@@ -91,12 +91,10 @@ void Cambio::imprimir_cambio()
         if (cambio_entero_[i].second == 1)
         {
             std::cout << cambio_entero_[i].first << "€ ";
-            total += 1;
         }
         else if (cambio_entero_[i].second != 0)
         {
             std::cout << cambio_entero_[i].second << "x" << cambio_entero_[i].first << "€ ";
-            total += cambio_entero_[i].second;
         }
     }
 
@@ -106,15 +104,23 @@ void Cambio::imprimir_cambio()
         if (cambio_decimal_[i].second == 1)
         {
             std::cout << cambio_decimal_[i].first << "centimos ";
-            total += 1;
         }
         else if (cambio_decimal_[i].second != 0)
         {
             std::cout << cambio_decimal_[i].second << "x" << cambio_decimal_[i].first << "centimos ";
-            total += cambio_decimal_[i].second;
         }
     } 
 
+    for (auto i = 0; i < euros_.size(); i++)
+    {
+        total += cambio_entero_[i].second;
+    }
+
+    for (auto i = 0; i < centimos_.size(); i++)
+    {
+        total += cambio_decimal_[i].second;
+    }
+
     std::cout << std::endl;
-    std::cout << "Total de monedas: ";
+    std::cout << "Total de monedas: " << total << std::endl;
 }
