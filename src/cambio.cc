@@ -2,8 +2,8 @@
 
 Cambio::Cambio()
 {
-    dinero_decimal_ = 0;
-    dinero_entero_ = 0;
+    dinero_decimal_ = 0.0;
+    dinero_entero_ = 0.0;
 }
 
 Cambio::~Cambio()
@@ -23,7 +23,8 @@ Cambio::Cambio(float dinero_entero, float dinero_decimal)
 Cambio::Cambio(float dinero)
 {
     dinero_decimal_ = dinero;
-    std::cout << std::endl;
+    // std::cout << dinero_decimal_ << std::endl;
+    // std::cout << std::endl;
 }
 
 void Cambio::calcular_cambio()
@@ -66,20 +67,23 @@ void Cambio::calcular_cambio_decimal()
     std::pair<float, int> variable;
     for (int i = 0; i < monedas_.size(); i++)
     {
-        if (dinero == 0)
+        if (dinero == 0.0)
         {
         }
         else
         {
             while (dinero >= monedas_[i])
             {
+                // std::cout  << dinero << " - " << monedas_[i] << " = ";
                 dinero -= monedas_[i];
+                dinero = round(dinero * 100) / 100;//funciona
+                // std::cout << dinero << std::endl;
                 counter++;
             }
             variable.second = counter;
             variable.first = monedas_[i];
             cambio_decimal_.push_back(variable);
-            variable.first = 0;
+            variable.first = 0.0;
             variable.second = 0;
             counter = 0;
         }
@@ -156,4 +160,3 @@ void Cambio::imprimir_cambio_monedas()
     std::cout << std::endl;
     std::cout << "Total de monedas: " << total << std::endl;
 }
-

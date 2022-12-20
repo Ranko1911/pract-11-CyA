@@ -9,6 +9,12 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
+    // float a = 1.8;
+    // float b = 0.6;
+
+    // float diff = a - b;
+
+    // cout << diff << endl;
     if (argc == 1)
     {
         cout << "No se ha introducido ningun argumento" << endl;

@@ -3,6 +3,7 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include <cmath>
 
 
 class Cambio {
@@ -11,8 +12,8 @@ class Cambio {
         float dinero_entero_;
         std::vector<std::pair <float,int>> cambio_entero_;
         std::vector<std::pair <float,int>> cambio_decimal_; 
-        std::vector<float> monedas_ = {2, 1 , 0.5, 0.2, 0.1, 0.05, 0.02, 0.01}; //valor en monedas
-        std::vector<float> billetes_ = {500, 200, 100, 50, 20, 10, 5}; //valor en billetes
+        std::vector<float> monedas_ = {2.0, 1.0 , 0.5, 0.2, 0.1, 0.05, 0.02, 0.01}; //valor en monedas
+        std::vector<float> billetes_ = {500.0, 200.0, 100.0, 50.0, 20.0, 10.0, 5.0}; //valor en billetes
 
     public:
         Cambio();
