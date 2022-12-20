@@ -15,7 +15,7 @@ Cambio::Cambio(float dinero_entero, float dinero_decimal)
     dinero_entero_ = dinero_entero;
     dinero_decimal_ = dinero_decimal * 100 - dinero_entero * 100;
     dinero_decimal_ = dinero_decimal_ / 100;
-    std::cout << std::endl;
+    // std::cout << std::endl;
     // std::cout << dinero_decimal_ << std::endl;
     // std::cout << dinero_entero_ << std::endl;
 }
@@ -74,10 +74,8 @@ void Cambio::calcular_cambio_decimal()
         {
             while (dinero >= monedas_[i])
             {
-                // std::cout  << dinero << " - " << monedas_[i] << " = ";
                 dinero -= monedas_[i];
                 dinero = round(dinero * 100) / 100;//funciona
-                // std::cout << dinero << std::endl;
                 counter++;
             }
             variable.second = counter;
