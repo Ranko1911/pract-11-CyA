@@ -7,9 +7,42 @@
 
 using namespace std;
 
-int main (int argc, char *argv[]) { 
-    float dinero_decimal_ = stof(argv[1]);
-    float dinero_entero_ = stoi(argv[1]);
+int main(int argc, char *argv[])
+{
+    if (argc == 1)
+    {
+        cout << "No se ha introducido ningun argumento" << endl;
+    }
+    else if (argc == 2)
+    {
+        float dinero_ = stof(argv[1]);
 
-    Cambio dinero(dinero_entero_, dinero_decimal_);
+        Cambio dinero(dinero_);
+        dinero.calcular_cambio_decimal();
+        dinero.imprimir_cambio_monedas();
+    }
+    else if (argc == 3)
+    {
+        if (argv[1] == "-b")
+        {
+            float dinero_decimal_ = stof(argv[2]);
+            float dinero_entero_ = stoi(argv[2]);
+
+            Cambio dinero(dinero_entero_, dinero_decimal_);
+            dinero.calcular_cambio();
+            dinero.imprimir_cambio();
+        }
+        else if (argv[1] == "-o")
+        {
+            /* code */
+        }
+        else
+        {
+            cout << "Argumento no valido" << endl;
+        }
+    }
+    else
+    {
+        cout << "Demasiados argumentos" << endl;
+    }
 }
