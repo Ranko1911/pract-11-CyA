@@ -88,6 +88,19 @@ void Cambio::calcular_cambio_decimal()
     }
 }
 
+void Cambio::calcular_cambio_alternativo(){
+    int suma = 0;
+    for (int i = 0; i < monedas_alternativo_.size(); i++)
+    {
+        int cantidad = (dinero_decimal_ - suma) / monedas_alternativo_[i];
+        std::cout << cantidad << " , " << monedas_alternativo_[i] << std::endl;
+        if (cantidad > 0) {
+            cambio_alternarivo_.push_back(std::make_pair(monedas_alternativo_[i], cantidad));
+            suma = suma + cantidad * monedas_alternativo_[i];
+        }
+    }
+}
+
 void Cambio::imprimir_cambio()
 {
     int total = 0;
@@ -153,6 +166,34 @@ void Cambio::imprimir_cambio_monedas()
     for (auto i = 0; i < monedas_.size(); i++)
     {
         total += cambio_decimal_[i].second;
+    }
+
+    std::cout << std::endl;
+    std::cout << "Total de monedas: " << total << std::endl;
+}
+
+
+void Cambio::imprimir_cambio_aternativo()
+{
+    int total = 0;
+
+    std::cout << "Solucion: ";
+
+    for (auto i = 0; i < monedas_alternativo_.size(); i++)
+    {
+        if (cambio_alternarivo_[i].second == 1)
+        {
+            std::cout << cambio_alternarivo_[i].first << "¢ ";
+        }
+        else if (cambio_alternarivo_[i].second != 0)
+        {
+            std::cout << cambio_alternarivo_[i].second << "x" << cambio_alternarivo_[i].first << "¢ ";
+        }
+    }
+
+    for (auto i = 0; i < monedas_alternativo_.size(); i++)
+    {
+        total += cambio_alternarivo_[i].second;
     }
 
     std::cout << std::endl;

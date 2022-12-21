@@ -36,7 +36,13 @@ int main(int argc, char *argv[])
         }
         else if (strcmp(argv[1] , "-o") == 0)
         {
-            std::cout << "not yet" << std::endl;
+            float dinero_ = stof(argv[2]);
+            dinero_ = round(dinero_ * 100);
+            std::cout << dinero_ << std::endl;
+
+            Cambio dinero(dinero_);
+            dinero.calcular_cambio_alternativo();
+            dinero.imprimir_cambio_aternativo();
         }
         else
         {
