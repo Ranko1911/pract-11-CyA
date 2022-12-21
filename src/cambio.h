@@ -17,6 +17,7 @@ class Cambio {
         std::vector<float> monedas_ = {2.0, 1.0 , 0.5, 0.2, 0.1, 0.05, 0.02, 0.01}; //valor en monedas
         std::vector<float> billetes_ = {500.0, 200.0, 100.0, 50.0, 20.0, 10.0, 5.0}; //valor en billetes
         std::vector<int> monedas_alternativo_ = {200, 100, 50, 20, 10, 5, 2, 1}; // valores para calcular las monedas en el modo alternativo
+        std::vector<int> billetes_alternativo_ = {50000, 20000, 10000, 5000, 2000, 1000, 500}; // valores para calcular los billetes en el modo alternativo
 
 
     public:

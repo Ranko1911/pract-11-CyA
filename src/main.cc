@@ -49,7 +49,22 @@ int main(int argc, char *argv[])
             cout << "Argumento no valido" << endl;
         }
     }
-    else
+    else if (argc == 4)
+    {
+        if (strcmp(argv[1] , "-b") == 0 && strcmp(argv[2] , "-o") == 0)
+        {
+            float dinero_decimal_ = stof(argv[3]);
+            float dinero_entero_ = stoi(argv[3]);
+
+            Cambio dinero(dinero_entero_, dinero_decimal_);
+            dinero.calcular_cambio();
+            dinero.imprimir_cambio();
+        }
+        else
+        {
+            cout << "Argumento no valido" << endl;
+        }
+    }else
     {
         cout << "Demasiados argumentos" << endl;
     }
