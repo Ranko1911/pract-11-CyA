@@ -91,12 +91,17 @@ void Cambio::calcular_cambio_decimal()
 void Cambio::calcular_cambio_alternativo()
 {
     int suma = 0;
+    int cantidad = 0;
+    std::pair<int, int> variable;
     for (int i = 0; i < monedas_alternativo_.size(); i++)
     {
-        int cantidad = (dinero_decimal_ - suma) / monedas_alternativo_[i];
+        cantidad = (dinero_decimal_ - suma) / monedas_alternativo_[i];
         if (cantidad > 0)
         {
-            cambio_alternarivo_.push_back(std::make_pair(monedas_alternativo_[i], cantidad));
+            // std::cout << cantidad << " + " << monedas_alternativo_[i] << std::endl;
+            variable.first = monedas_alternativo_[i];
+            variable.second = cantidad;
+            cambio_alternarivo_.push_back(variable);
             suma = suma + cantidad * monedas_alternativo_[i];
         }
     }
@@ -200,7 +205,7 @@ void Cambio::imprimir_cambio_alternativo()
 
     std::cout << "Solucion: ";
 
-    for (auto i = 0; i < monedas_alternativo_.size(); i++)
+    for (auto i = 0; i < cambio_alternarivo_.size(); i++)
     {
         if (cambio_alternarivo_[i].second == 1)
         {
@@ -212,7 +217,7 @@ void Cambio::imprimir_cambio_alternativo()
         }
     }
 
-    for (auto i = 0; i < monedas_alternativo_.size(); i++)
+    for (auto i = 0; i < cambio_alternarivo_.size(); i++)
     {
         total += cambio_alternarivo_[i].second;
     }
@@ -227,7 +232,7 @@ void Cambio::imprimir_cambio_alternativo_2()
 
     std::cout << "Solucion: ";
 
-    for (auto i = 0; i < billetes_alternativo_.size(); i++)
+    for (auto i = 0; i < cambio_alternarivo_2.size(); i++)
     {
         if (cambio_alternarivo_2[i].second == 1)
         {
@@ -239,12 +244,12 @@ void Cambio::imprimir_cambio_alternativo_2()
         }
     }
 
-    for (auto i = 0; i < billetes_alternativo_.size(); i++)
+    for (auto i = 0; i < cambio_alternarivo_2.size(); i++)
     {
         total += cambio_alternarivo_2[i].second;
     }
 
-    for (auto i = 0; i < monedas_alternativo_.size(); i++)
+    for (auto i = 0; i < cambio_alternarivo_.size(); i++)
     {
         if (cambio_alternarivo_[i].second == 1)
         {
@@ -256,14 +261,10 @@ void Cambio::imprimir_cambio_alternativo_2()
         }
     }
 
-    for (auto i = 0; i < monedas_alternativo_.size(); i++)
+    for (auto i = 0; i < cambio_alternarivo_.size(); i++)
     {
         total += cambio_alternarivo_[i].second;
     }
-
-    std::cout << monedas_alternativo_.size() << std::endl;
-
-
 
     std::cout << std::endl;
     std::cout << "Total de monedas: " << total << std::endl;

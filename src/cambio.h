@@ -9,8 +9,8 @@
 
 class Cambio {
     private:
-        float dinero_decimal_;
-        int dinero_entero_;
+        float dinero_decimal_ = 0.0;
+        int dinero_entero_ = 0;
 
         std::vector<std::pair <float,int>> cambio_entero_; 
         std::vector<std::pair <float,int>> cambio_decimal_; 

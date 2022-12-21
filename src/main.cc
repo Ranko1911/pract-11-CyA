@@ -3,6 +3,8 @@
 #include <string>
 #include <fstream>
 #include <cstring>
+#include <cmath>
+
 
 #include "cambio.h"
 
@@ -10,6 +12,7 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
+    float dinero_ = 0.0;
     if (argc == 1)
     {
         cout << "No se ha introducido ningun argumento" << endl;
@@ -17,7 +20,7 @@ int main(int argc, char *argv[])
     else if (argc == 2)
     {
 
-        float dinero_ = stof(argv[1]);
+        dinero_ = stof(argv[1]);
 
         Cambio dinero(dinero_);
         dinero.calcular_cambio_decimal();
@@ -36,11 +39,11 @@ int main(int argc, char *argv[])
         }
         else if (strcmp(argv[1] , "-o") == 0)
         {
-            float dinero_ = stof(argv[2]);
+            dinero_ = stof(argv[2]);
             dinero_ = round(dinero_ * 100);
-            std::cout   <<  std::endl;
 
             Cambio dinero(dinero_);
+
             dinero.calcular_cambio_alternativo();
             dinero.imprimir_cambio_alternativo();
         }
@@ -56,7 +59,6 @@ int main(int argc, char *argv[])
             float dinero_decimal_ = stof(argv[3]);
             dinero_decimal_ = round(dinero_decimal_ * 100);
             int dinero_entero_ = stoi(argv[3]);
-            std::cout << dinero_entero_ << std::endl;
             dinero_entero_ = round(dinero_entero_ * 100);
 
             Cambio dinero(dinero_entero_, dinero_decimal_);
