@@ -170,6 +170,39 @@ void Cambio::imprimir_cambio()
 
     std::cout << std::endl;
     std::cout << "Total de billetes y/o monedas: " << total << std::endl;
+
+    // modificacion
+    int max = 0;
+    int max2 = 0;
+    int max_index = 0;
+    int max_index2 = 0;
+    for (auto i = 0; i < billetes_.size(); i++)
+    {
+        if (cambio_entero_[i].second > max)
+        {
+            max = cambio_entero_[i].second;
+            max_index = i;
+        }
+    }
+
+    for (auto i = 0; i < monedas_.size(); i++)
+    {
+        if (cambio_decimal_[i].second > max2)
+        {
+            max2 = cambio_decimal_[i].second;
+            max_index2 = i;
+        }
+    }
+
+    if (max_index2 > max_index)
+    {
+        std::cout << "La moneda o billete mas grande es: " << cambio_decimal_[max_index2].first << "¢" << std::endl;
+    }
+    else
+    {
+        std::cout << "La moneda o billete mas grande es: " << cambio_entero_[max_index].first << "€" << std::endl;
+    }
+    // modificacion
 }
 
 void Cambio::imprimir_cambio_monedas()
@@ -197,6 +230,21 @@ void Cambio::imprimir_cambio_monedas()
 
     std::cout << std::endl;
     std::cout << "Total de monedas: " << total << std::endl;
+
+    // modificación
+    int max = 0;
+    int max_index = 0;
+    for (auto i = 0; i < monedas_.size(); i++)
+    {
+        if (cambio_decimal_[i].second > max)
+        {
+            max = cambio_decimal_[i].second;
+            max_index = i;
+        }
+    }
+
+    std::cout << "Moneda mas frecuente: " << cambio_decimal_[max_index].first << "€" << std::endl;
+    // modificacion
 }
 
 void Cambio::imprimir_cambio_alternativo()
@@ -224,6 +272,21 @@ void Cambio::imprimir_cambio_alternativo()
 
     std::cout << std::endl;
     std::cout << "Total de monedas: " << total << std::endl;
+
+    // calcular moneda alternativa mas frecuente, en caso de empate, la de mayor valor
+    int max = 0;
+    int max_index = 0;
+    for (auto i = 0; i < cambio_alternarivo_.size(); i++)
+    {
+        if (cambio_alternarivo_[i].second > max)
+        {
+            max = cambio_alternarivo_[i].second;
+            max_index = i;
+        }
+    }
+
+    std::cout << "Moneda mas frecuente: " << cambio_alternarivo_[max_index].first << "¢" << std::endl;
+    // modificacion
 }
 
 void Cambio::imprimir_cambio_alternativo_2()
@@ -268,4 +331,48 @@ void Cambio::imprimir_cambio_alternativo_2()
 
     std::cout << std::endl;
     std::cout << "Total de monedas: " << total << std::endl;
+
+    // calcular la moneda más frecuentemente utilizada, en caso de empate, la de mayor valor
+    int max = 0;
+    int max2 = 0;
+    int max_index = 0;
+    int max2_index = 0;
+
+    for (auto i = 0; i < cambio_alternarivo_.size(); i++)
+    {
+        if (cambio_alternarivo_[i].second > max)
+        {
+            max = cambio_alternarivo_[i].second;
+            max_index = i;
+        }
+    }
+
+    for (auto i = 0; i < cambio_alternarivo_2.size(); i++)
+    {
+        if (cambio_alternarivo_2[i].second > max2)
+        {
+            max2 = cambio_alternarivo_2[i].second;
+            max2_index = i;
+        }
+    }
+
+    if (max > max2)
+    {
+        std::cout << "Moneda mas frecuente: " << cambio_alternarivo_[max_index].first << "¢" << std::endl;
+    }
+    else if (max2 > max)
+    {
+        std::cout << "Moneda mas frecuente: " << cambio_alternarivo_2[max2_index].first << "€" << std::endl;
+    }
+    else
+    {
+        if (cambio_alternarivo_[max_index].first > cambio_alternarivo_2[max2_index].first)
+        {
+            std::cout << "Moneda mas frecuente: " << cambio_alternarivo_[max_index].first << "¢" << std::endl;
+        }
+        else
+        {
+            std::cout << "Moneda mas frecuente: " << cambio_alternarivo_2[max2_index].first << "€" << std::endl;
+        }
+    }
 }

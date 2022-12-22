@@ -10,6 +10,8 @@
 
 using namespace std;
 
+//modificacion: calcular que moneda y/o billete es el/la más frecuente, en caso de empate seleccionar la de mayor valor
+
 int main(int argc, char *argv[])
 {
     float dinero_ = 0.0;
