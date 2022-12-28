@@ -42,45 +42,45 @@ BigInt Factorial(int n) {
 int main()
 {
     BigInt first("12345");
-    cout << "The number of digits"
-         << " in first big integer = "
-         << Length(first) << '\n';
+    // cout << "The number of digits"
+    //      << " in first big integer = "
+    //      << Length(first) << '\n';
     BigInt second(12345);
-    if (first == second) {
-        cout << "first and second are equal!\n";
-    }
-    else
-        cout << "Not equal!\n";
-    BigInt third("10000");
-    BigInt fourth("100000");
-    if (third < fourth) {
-        cout << "third is smaller than fourth!\n";
-    }
-    BigInt fifth("10000000");
-    if (fifth > fourth) {
-        cout << "fifth is larger than fourth!\n";
-    }
+    // if (first == second) {
+    //     cout << "first and second are equal!\n";
+    // }
+    // else
+    //     cout << "Not equal!\n";
+    // BigInt third("10000");
+    // BigInt fourth("100000");
+    // if (third < fourth) {
+    //     cout << "third is smaller than fourth!\n";
+    // }
+    // BigInt fifth("10000000");
+    // if (fifth > fourth) {
+    //     cout << "fifth is larger than fourth!\n";
+    // }
  
-    // Printing all the numbers
-    cout << "first = " << first << '\n';
-    cout << "second = " << second << '\n';
-    cout << "third = " << third << '\n';
-    cout << "fourth = " << fourth<< '\n';
-    cout << "fifth = " << fifth<< '\n';
+    // // Printing all the numbers
+    // cout << "first = " << first << '\n';
+    // cout << "second = " << second << '\n';
+    // cout << "third = " << third << '\n';
+    // cout << "fourth = " << fourth<< '\n';
+    // cout << "fifth = " << fifth<< '\n';
  
     // Incrementing the value of first
-    first++;
-    cout << "After incrementing the"
-         << " value of first is : ";
-    cout << first << '\n';
-    BigInt sum;
-    sum = (fourth + fifth);
-    cout << "Sum of fourth and fifth = "
-         << sum << '\n';
-    BigInt product;
-    product = second * third;
-    cout << "Product of second and third = "
-         << product << '\n';
+    // first++;
+    // cout << "After incrementing the"
+    //      << " value of first is : ";
+    // cout << first << '\n';
+    // BigInt sum;
+    // sum = (fourth + fifth);
+    // cout << "Sum of fourth and fifth = "
+    //      << sum << '\n';
+    // BigInt product;
+    // product = second * third;
+    // cout << "Product of second and third = "
+    //      << product << '\n';
  
 //     // Print the fibonacci number from 1 to 100
 //     cout << "-------------------------Fibonacci"
@@ -110,6 +110,11 @@ int main()
 //     }
 //   // This code is contributed
 //   // by Gatea David
+
+    Karatsuba karatsuba;
+    BigInt temp;
+    temp = karatsuba.add(first, second);
+    std::cout << "first + second = " << temp << std::endl;
 }
 
 
