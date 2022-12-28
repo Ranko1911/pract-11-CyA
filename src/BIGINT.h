@@ -5,8 +5,10 @@
 using namespace std;
 
 class BigInt{
-	string digits;
+	
 public:
+	string digits;
+
 
 	//Constructors:
 	BigInt(unsigned long long n = 0);

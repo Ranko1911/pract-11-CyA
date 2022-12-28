@@ -5,7 +5,7 @@
 #include <cstring>
 #include <cmath>
 
-#include "BIGINT.h"
+#include "Karatsuba.h"
 
 using namespace std;
 
@@ -82,34 +82,34 @@ int main()
     cout << "Product of second and third = "
          << product << '\n';
  
-    // Print the fibonacci number from 1 to 100
-    cout << "-------------------------Fibonacci"
-         << "------------------------------\n";
-    for (int i = 0; i <= 100; i++) {
-        BigInt Fib;
-        Fib = NthFibonacci(i);
-        cout << "Fibonacci " << i << " = " << Fib<<'\n';
-    }
-    cout << "-------------------------Catalan"
-         << "------------------------------\n";
-    for (int i = 0; i <= 100; i++) {
-        BigInt Cat;
-        Cat = NthCatalan(i);
-        cout << "Catalan " << i << " = " << Cat<<'\n';
-    }
+//     // Print the fibonacci number from 1 to 100
+//     cout << "-------------------------Fibonacci"
+//          << "------------------------------\n";
+//     for (int i = 0; i <= 100; i++) {
+//         BigInt Fib;
+//         Fib = NthFibonacci(i);
+//         cout << "Fibonacci " << i << " = " << Fib<<'\n';
+//     }
+//     cout << "-------------------------Catalan"
+//          << "------------------------------\n";
+//     for (int i = 0; i <= 100; i++) {
+//         BigInt Cat;
+//         Cat = NthCatalan(i);
+//         cout << "Catalan " << i << " = " << Cat<<'\n';
+//     }
  
-    // Calculating factorial of from 1 to 100
-    cout << "-------------------------Factorial"
-         << "------------------------------\n";
-    for (int i = 0; i <= 100; i++) {
-        BigInt fact;
-        fact = Factorial(i);
-        cout << "Factorial of "
-             << i << " = ";
-        cout << fact << '\n';
-    }
-  // This code is contributed
-  // by Gatea David
+//     // Calculating factorial of from 1 to 100
+//     cout << "-------------------------Factorial"
+//          << "------------------------------\n";
+//     for (int i = 0; i <= 100; i++) {
+//         BigInt fact;
+//         fact = Factorial(i);
+//         cout << "Factorial of "
+//              << i << " = ";
+//         cout << fact << '\n';
+//     }
+//   // This code is contributed
+//   // by Gatea David
 }
 
 
