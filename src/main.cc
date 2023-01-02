@@ -40,11 +40,11 @@ BigInt Factorial(int n) {
 
 // Driver code with some examples
 int main() {
-  BigInt first("12345");
+  BigInt first(2);
   // cout << "The number of digits"
   //      << " in first big integer = "
   //      << Length(first) << '\n';
-  BigInt second(12345);
+  BigInt second(2);
   // if (first == second) {
   //     cout << "first and second are equal!\n";
   // }
@@ -117,7 +117,7 @@ int main() {
   // temp = hola;
   // std::cout << "temp = " << temp << std::endl;
   std::cout << "----------------------------------" << std::endl;
-  temp = karatsuba.add(first, second);
+  temp = karatsuba.multiply(first, second);
   std::cout << "first + second = " << temp << std::endl;
 }
 
