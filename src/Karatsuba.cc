@@ -15,22 +15,23 @@ BigInt Karatsuba::add(BigInt x, BigInt y) {
     if (i < Length(x)) {
       sum += x[i];
       std::cout << "x[i] = " << x[i] << '\n';
-      std::cout << "sum = " << sum << '\n';
     }
     if (i < Length(y)) {
       sum += y[i];
       std::cout << "y[i] = " << y[i] << '\n';
-      std::cout << "sum = " << sum << '\n';
     }
-    result.digits.push_back(sum % 10);
+    std::cout << "sum = " << sum << '\n';
     std::cout << "sum % 10 = " << sum % 10 << '\n';
+    result.digits.push_back(sum % 10);
     carry = sum / 10;
     std::cout << "carry = " << carry << '\n';
     i++;
+    std::cout << "----------------------------------" << std::endl;
   }
-  // if (carry) {
-  //   result.digits.push_back(carry);
-  // }
+  
+  if (carry) {
+    result.digits.push_back(carry);
+  }
   return result;
 }
 
