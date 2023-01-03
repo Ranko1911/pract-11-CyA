@@ -59,7 +59,7 @@ BigInt Karatsuba::subtract(BigInt x, BigInt y) {
 
 // algoritmo de multiplicacion recursivo de karatsuba
 BigInt Karatsuba::multiply(BigInt x, BigInt y) { 
-  BigInt a, b, c, d, ac, bd, abcd, adbc, result;
+   BigInt a, b, c, d, ac, bd, abcd, adbc, result;
   int n = Length(x);
   int m = Length(y);
   int k = max(n, m);
@@ -135,4 +135,36 @@ BigInt Karatsuba::multiply(BigInt x, BigInt y) {
   std::cout << "--------------- cerrar -----------------" << std::endl;
 
   return result;
+  // BigInt a, b, c, d, ac, bd, abcd, adbc, result;
+  // int n = Length(x);
+  // int m = Length(y);
+  // int k = max(n, m);
+
+  // BigInt diez(10);
+  // if (k == 1) {
+  //   result = x * y;
+  //   return result;
+  // }
+  // int half;
+  // half = k / 2;
+  // a = (x / (diez^half));	// a = (x / std::pow(10,half));
+  // c = (y / (diez^half));  // c = (y / std::pow(10,half));
+  // b = (x % (diez^half));  // b = (x % std::pow(10,half));
+  // d = (y % (diez^half));  // d = (y % std::pow(10,half));
+  // ac = multiply(a, c);  
+  // bd = multiply(b, d);  
+  // BigInt a1;
+  // a1 = a + b;  // a1 = a + b 
+  // BigInt c1;
+  // c1 = c + d;  // c1 = c + d 
+  // abcd = multiply(a1, c1); // abcd = a1 * c1 
+  // BigInt a2;
+  // a2 = abcd - ac;  // a2 = abcd - ac 
+  // adbc = a2 - bd; // adbc = a2 - bd 
+  // ac.digits.insert( ac.digits.begin() , (int)(k), '0' - '0'); // ac = ac * 10^2half // '0' - '0' = 0
+  // adbc.digits.insert(adbc.digits.begin() , (int)(k/2), '0' - '0'); // adbc = adbc * 10^half // '0' - '0' = 0
+  // BigInt a3;
+  // a3 = ac + bd;  // a3 = ac + bd 
+  // result = a3 + adbc; // result = a3 + adbc 
+  // return result;
 }

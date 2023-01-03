@@ -261,7 +261,7 @@ BigInt &operator^=(BigInt &a, const BigInt &b) {
   return a;
 }
 
-BigInt operator^(BigInt &a, BigInt &b) {
+BigInt operator^(BigInt &a, const BigInt &b) {
   BigInt temp(a);
   temp ^= b;
   return temp;
