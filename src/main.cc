@@ -59,14 +59,14 @@ int main() {
   // if (fifth > fourth) {
   //     cout << "fifth is larger than fourth!\n";
   // }
-
+  //
   // // Printing all the numbers
   // cout << "first = " << first << '\n';
   // cout << "second = " << second << '\n';
   // cout << "third = " << third << '\n';
   // cout << "fourth = " << fourth<< '\n';
   // cout << "fifth = " << fifth<< '\n';
-
+  //
   // Incrementing the value of first
   // first++;
   // cout << "After incrementing the"
@@ -80,7 +80,7 @@ int main() {
   // product = second * third;
   // cout << "Product of second and third = "
   //      << product << '\n';
-
+  //
   //     // Print the fibonacci number from 1 to 100
   //     cout << "-------------------------Fibonacci"
   //          << "------------------------------\n";
@@ -96,7 +96,7 @@ int main() {
   //         Cat = NthCatalan(i);
   //         cout << "Catalan " << i << " = " << Cat<<'\n';
   //     }
-
+  //
   //     // Calculating factorial of from 1 to 100
   //     cout << "-------------------------Factorial"
   //          << "------------------------------\n";
@@ -112,12 +112,7 @@ int main() {
 
   Karatsuba karatsuba;
   BigInt temp;
-  // BigInt hola("123456789");
-  // std::cout << "temp = " << temp << std::endl;
-  // temp = hola;
-  // std::cout << "temp = " << temp << std::endl;
-  // std::cout << "----------------------------------" << std::endl;
-  temp = karatsuba.time_complex(first, second);
+  temp = karatsuba.multiply(first, second);
   std::cout << "first * second = " << temp << std::endl;
 }
 
@@ -130,17 +125,17 @@ int main() {
 //     }
 //     else if (argc == 2)
 //     {
-
+//
 //     }
 //     else if (argc == 3)
 //     {
 //         if (strcmp(argv[1] , "-b") == 0)
 //         {
-
+//
 //         }
 //         else if (strcmp(argv[1] , "-o") == 0)
 //         {
-
+//
 //         }
 //         else
 //         {
@@ -152,7 +147,7 @@ int main() {
 //         if ((strcmp(argv[1] , "-b") == 0 && strcmp(argv[2] , "-o") == 0) ||
 //         strcmp(argv[2] , "-b") == 0 && strcmp(argv[1] , "-o") == 0)
 //         {
-
+//
 //         }
 //         else
 //         {

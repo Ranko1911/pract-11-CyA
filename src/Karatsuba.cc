@@ -58,53 +58,50 @@ BigInt Karatsuba::subtract(BigInt x, BigInt y) {
 }
 
 // algoritmo de multiplicacion recursivo de karatsuba
-BigInt Karatsuba::time_complex(BigInt x, BigInt y) { 
+BigInt Karatsuba::multiply(BigInt x, BigInt y) { 
   BigInt a, b, c, d, ac, bd, abcd, adbc, result;
   int n = Length(x);
   int m = Length(y);
   int k = max(n, m);
 
   if (k == 1) {
-    result = x[0] * y[0];
+    result = x * y;
     return result;
   }
   int half = k / 2;
 
-  for (int i = 0; i < half; i++) {
-    a.digits.push_back(x[i]);
-    a.digits.erase(a.digits.begin());
+  a.digits = x.digits.substr(0, half);
+  c.digits = y.digits.substr(0, half);
+  std::cout << "a: " << a << std::endl;
+  std::cout << "c: " << c << std::endl;
 
-    c.digits.push_back(y[i]);
-    c.digits.erase(c.digits.begin());
-  }
-  for (int i = half; i < k; i++) {
-    b.digits.push_back(x[i]);
-    b.digits.erase(b.digits.begin());
+  b.digits = x.digits.substr(half, k);
+  d.digits = y.digits.substr(half, k);
+  std::cout << "b: " << b << std::endl;
+  std::cout << "d: " << d << std::endl;
 
-    d.digits.push_back(y[i]);
-    d.digits.erase(d.digits.begin());
-  }
-
-  ac = time_complex(a, c);  // se queda pillado aqui
-  bd = time_complex(b, d);
+  ac = multiply(a, c);  // se queda pillado aqui // 4
+  bd = multiply(b, d);  // 1
   BigInt a1;
-  a1 = add(a, b);  // a1 = a + b
+  a1 = a + b;  // a1 = a + b // 3
   BigInt c1;
-  c1 = add(c, d);  // c1 = c + d
-  abcd = time_complex(a1, c1);
+  c1 = c + d;  // c1 = c + d // 2
+  abcd = multiply(a1, c1); // abcd = a1 * c1 // 6
   BigInt a2;
-  a2 = subtract(abcd, ac);  // a2 = abcd - ac
-  adbc = subtract(a2, bd);
-  for (int i = 0; i < 2 * half; i++) {
-    ac.digits.push_back(0);
-    // ac.digits.erase(ac.digits.begin());
-  }
-  for (int i = 0; i < half; i++) {
-    adbc.digits.push_back(0);
-  }
+  a2 = abcd - ac;  // a2 = abcd - ac // 2
+  adbc = a2 - bd; // adbc = a2 - bd // 1
+  // for (int i = 0; i < 2 * half; i++) { //hacer metodo separado
+  //   ac.digits.push_back(0); // ac.digits.insert(ac.digits.begin(), 0);
+  //   // ac.digits.erase(ac.digits.begin());
+  // }
+  ac.digits.insert( 0 , 2 * half, '0'-'0');
+  // for (int i = 0; i < half; i++) { // hacer metodo separado
+  //   adbc.digits.push_back(0);
+  // }
+  adbc.digits.insert(0 , half, '0' - '0');
   BigInt a3;
-  a3 = add(ac, bd);  // a3 = ac + bd
-  result = add(a3, adbc); // result = a3 + adbc
+  a3 = ac + bd;  // a3 = ac + bd // 5
+  result = a3 + adbc; // result = a3 + adbc // 6
   return result;
 }
 
