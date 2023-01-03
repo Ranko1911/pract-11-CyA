@@ -40,11 +40,11 @@ BigInt Factorial(int n) {
 
 // Driver code with some examples
 int main() {
-  BigInt first(12);
+  BigInt first(12345);
   // cout << "The number of digits"
   //      << " in first big integer = "
   //      << Length(first) << '\n';
-  BigInt second(12);
+  BigInt second(67890);
   // if (first == second) {
   //     cout << "first and second are equal!\n";
   // }

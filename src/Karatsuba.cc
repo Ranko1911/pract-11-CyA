@@ -69,6 +69,8 @@ BigInt Karatsuba::multiply(BigInt x, BigInt y) {
     return result;
   }
   int half = k / 2;
+  
+  std::cout << "--------------- abrir -----------------" << std::endl;
 
   a.digits = x.digits.substr(0, half);
   c.digits = y.digits.substr(0, half);
@@ -80,22 +82,57 @@ BigInt Karatsuba::multiply(BigInt x, BigInt y) {
   std::cout << "b: " << b << std::endl;
   std::cout << "d: " << d << std::endl;
 
-  ac = multiply(a, c);  // se queda pillado aqui // 4
-  bd = multiply(b, d);  // 1
+  std::cout << "multilpliying a and c in ac" << std::endl;
+  ac = multiply(a, c);  
+  std::cout << "ac: " << ac << std::endl;
+
+  std::cout << "multilpliying b and d in db" << std::endl;
+  bd = multiply(b, d);  
+  std::cout << "bd: " << bd << std::endl;
+
+  std::cout << "adding a and b in a1" << std::endl;
   BigInt a1;
-  a1 = a + b;  // a1 = a + b // 3
+  a1 = a + b;  // a1 = a + b 
+  std::cout << "a1: " << a1 << std::endl;
+
+  std::cout << "adding c and d in c1" << std::endl;
   BigInt c1;
-  c1 = c + d;  // c1 = c + d // 2
-  abcd = multiply(a1, c1); // abcd = a1 * c1 // 6
+  c1 = c + d;  // c1 = c + d 
+  std::cout << "c1: " << c1 << std::endl;
+
+
+  std::cout << "multilpliying a1 and c1 in abcd" << std::endl;
+  abcd = multiply(a1, c1); // abcd = a1 * c1 
+  std::cout << "abcd: " << abcd << std::endl;
+
+
+  std::cout << "subtracting ac and bd in a2" << std::endl;
   BigInt a2;
-  a2 = abcd - ac;  // a2 = abcd - ac // 2
-  adbc = a2 - bd; // adbc = a2 - bd // 1
+  a2 = abcd - ac;  // a2 = abcd - ac 
+  std::cout << "a2: " << a2 << std::endl;
 
-  ac.digits.insert( 0 , 2 * half, '0'-'0');
+  std::cout << "subtracting a2 and bd in adbc" << std::endl;
+  adbc = a2 - bd; // adbc = a2 - bd 
+  std::cout << "adbc: " << adbc << std::endl;
 
-  adbc.digits.insert(0 , half, '0' - '0');
+  std::cout << " insert 0s in ac" << std::endl;
+  ac.digits.insert( ac.digits.begin() , 2 * half, '0' - '0'); // ac = ac * 10^2half // '0' - '0' = 0
+  std::cout << "ac: " << ac << std::endl;
+
+  std::cout << " insert 0s in adbc" << std::endl;
+  adbc.digits.insert(adbc.digits.begin() , half, '0' - '0'); // adbc = adbc * 10^half // '0' - '0' = 0
+  std::cout << "adbc: " << adbc << std::endl;
+
+  std::cout << "adding ac and bd in a3" << std::endl;
   BigInt a3;
-  a3 = ac + bd;  // a3 = ac + bd // 5
-  result = a3 + adbc; // result = a3 + adbc // 6
+  a3 = ac + bd;  // a3 = ac + bd 
+  std::cout << "a3: " << a3 << std::endl;
+  
+  std::cout << "adding a3 and adbc in result" << std::endl;
+  result = a3 + adbc; // result = a3 + adbc 
+  std::cout << "result: " << result << std::endl;
+  
+  std::cout << "--------------- cerrar -----------------" << std::endl;
+
   return result;
 }

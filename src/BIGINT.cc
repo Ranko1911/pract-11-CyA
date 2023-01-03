@@ -298,8 +298,6 @@ BigInt sqrt(BigInt &a) {
   return v;
 }
 
-
-
 istream &operator>>(istream &in, BigInt &a) {
   string s;
   in >> s;
