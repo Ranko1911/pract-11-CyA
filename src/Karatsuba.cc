@@ -64,21 +64,24 @@ BigInt Karatsuba::multiply(BigInt x, BigInt y) {
   int m = Length(y);
   int k = max(n, m);
 
+  BigInt diez(10);
+
   if (k == 1) {
     result = x * y;
     return result;
   }
-  int half = k / 2;
+  BigInt half;
+  half = k / 2;
   
   std::cout << "--------------- abrir -----------------" << std::endl;
 
-  a = (x / std::pow(10,half));
-  c = (y / std::pow(10,half));
+  a = (x / (diez^half));
+  c = (y / (diez^half));
   std::cout << "a: " << a << std::endl;
   std::cout << "c: " << c << std::endl;
 
-  b = (x % std::pow(10,half));
-  d = (y % std::pow(10,half));
+  b = (x % (diez^half));
+  d = (y % (diez^half));
   std::cout << "b: " << b << std::endl;
   std::cout << "d: " << d << std::endl;
 
@@ -116,11 +119,13 @@ BigInt Karatsuba::multiply(BigInt x, BigInt y) {
   std::cout << "adbc: " << adbc << std::endl;
 
   std::cout << " insert 0s in ac" << std::endl;
-  ac.digits.insert( ac.digits.begin() , 2 * half, '0' - '0'); // ac = ac * 10^2half // '0' - '0' = 0
+  ac = ac * (diez^half * 2);
+  // ac.digits.insert( ac.digits.begin() , 2 * half, '0' - '0'); // ac = ac * 10^2half // '0' - '0' = 0
   std::cout << "ac: " << ac << std::endl;
 
   std::cout << " insert 0s in adbc" << std::endl;
-  adbc.digits.insert(adbc.digits.begin() , half, '0' - '0'); // adbc = adbc * 10^half // '0' - '0' = 0
+   adbc = adbc * (diez^half); // '0' - '0' = 0
+  // adbc.digits.insert(adbc.digits.begin() , half, '0' - '0'); // adbc = adbc * 10^half // '0' - '0' = 0
   std::cout << "adbc: " << adbc << std::endl;
 
   std::cout << "adding ac and bd in a3" << std::endl;
