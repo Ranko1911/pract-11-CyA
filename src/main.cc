@@ -44,7 +44,7 @@ int main() {
   // cout << "The number of digits"
   //      << " in first big integer = "
   //      << Length(first) << '\n';
-  BigInt second(67890);
+  BigInt second(12345);
   // if (first == second) {
   //     cout << "first and second are equal!\n";
   // }

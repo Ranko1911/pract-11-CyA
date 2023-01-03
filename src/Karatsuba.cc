@@ -72,13 +72,13 @@ BigInt Karatsuba::multiply(BigInt x, BigInt y) {
   
   std::cout << "--------------- abrir -----------------" << std::endl;
 
-  a.digits = x.digits.substr(0, half);
-  c.digits = y.digits.substr(0, half);
+  a = (x / std::pow(10,half));
+  c = (y / std::pow(10,half));
   std::cout << "a: " << a << std::endl;
   std::cout << "c: " << c << std::endl;
 
-  b.digits = x.digits.substr(half, k);
-  d.digits = y.digits.substr(half, k);
+  b = (x % std::pow(10,half));
+  d = (y % std::pow(10,half));
   std::cout << "b: " << b << std::endl;
   std::cout << "d: " << d << std::endl;
 
