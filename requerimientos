@@ -1,0 +1,11 @@
+Requisitos funcionales mínimos
+Para superar la práctica, los requisitos funcionales mínimos exigidos son:
+
+Requisitos funcionales opcionales
+Dentro de la evaluación global de la práctica, se valorarán positivamente hasta tres de los siguientes requisitos optativos:
+
+Implementación híbrida del algoritmo de Karatsuba, de forma que cuando el número de dígitos de los valores x e y a multiplicar sean menor o igual que un valor cota determinado utilice el operador * de la clase BigInt, supuestamente mas eficiente para números pequeños. Llamando al programa con la opción -n <cota> en la línea de comandos, donde <cota> es el valor de cota del cambio
+Generación aleatoria de los números x e y enteros positivos a multiplicar. Llamando al programa con la opción -r <dígitos> en la línea de comandos, donde <dígitos> es el el número de dígitos que tiene que tener cada número
+Realización de un documento con una tabla de tiempos de cálculo empleados en la ejecución utilizando números con distintas cantidades de dígitos y comparando con distintos algoritmos o diferentes cotas de la implementación híbrida del algoritmo de Karatsuba
+Implementación de algún otro algoritmo de multiplicación de números enteros grandes
+Modificación de la clase BigInt para realizar un empaquetado más eficiente de los números enteros, y cambio por tanto de la base B

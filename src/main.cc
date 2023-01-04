@@ -1,3 +1,4 @@
+#include <chrono>
 #include <cmath>
 #include <cstring>
 #include <fstream>
@@ -7,6 +8,8 @@
 
 #include "Karatsuba.h"
 #include "file_manager.h"
+
+using namespace std::chrono;
 
 int main2(int argc, char *argv[]) {
   std::string first_("12345678");
@@ -32,6 +35,7 @@ int main(int argc, char *argv[]) {
   } else if (argc == 2) {
     std::cout << "No se ha introducido suficientes argumentos " << std::endl;
   } else if (argc == 3) {
+    auto start = high_resolution_clock::now();
     file_manager.ReadFile(argv[1]);
     std::string primer_fichero = file_manager.GetContent();
     file_manager.SetContent("");
@@ -44,9 +48,15 @@ int main(int argc, char *argv[]) {
     BigInt second(segundo_fichero);
 
     temp = karatsuba.multiply(first, second);
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start);
+
     std::cout << "first * second = " << temp << std::endl;
+    std::cout << "Time taken by function: " << duration.count()
+              << " microseconds" << std::endl;
   } else if (argc == 4) {
     if (strcmp(argv[1], "-k") == 0) {
+      auto start = high_resolution_clock::now();
       file_manager.ReadFile(argv[2]);
       std::string primer_fichero = file_manager.GetContent();
       file_manager.SetContent("");
@@ -59,9 +69,14 @@ int main(int argc, char *argv[]) {
       BigInt second(segundo_fichero);
 
       temp = karatsuba.multiply(first, second);
+      auto stop = high_resolution_clock::now();
+      auto duration = duration_cast<microseconds>(stop - start);
       std::cout << "first * second = " << temp << std::endl;
+      std::cout << "Time taken by function: " << duration.count()
+                << " microseconds" << std::endl;
 
     } else if (strcmp(argv[1], "-m") == 0) {
+      auto start = high_resolution_clock::now();
       file_manager.ReadFile(argv[2]);
       std::string primer_fichero = file_manager.GetContent();
       file_manager.SetContent("");
@@ -74,7 +89,11 @@ int main(int argc, char *argv[]) {
       BigInt second(segundo_fichero);
       BigInt temp2;
       temp2 = first * second;
-      std::cout << "first * second = " << temp2 << std::endl;
+      auto stop = high_resolution_clock::now();
+      auto duration = duration_cast<microseconds>(stop - start);
+      std::cout << "first * second = " << temp << std::endl;
+      std::cout << "Time taken by function: " << duration.count()
+                << " microseconds" << std::endl;
     } else {
       cout << "Argumento no valido" << endl;
     }
