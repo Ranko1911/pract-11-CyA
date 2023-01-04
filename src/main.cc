@@ -48,7 +48,7 @@ int main(int argc, char *argv[]) {
     temp = karatsuba.multiply(first, second);
     std::cout << "first * second = " << temp << std::endl;
   } else if (argc == 4) {
-    std::cout << "Demasiados argumentos" << std::endl;
+    
   } else {
     std::cout << "Demasiados argumentos" << std::endl;
   }
