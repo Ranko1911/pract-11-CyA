@@ -1,6 +1,7 @@
 // C++ program to implement
 // the above approach
 #include <bits/stdc++.h>
+#pragma once
 
 using namespace std;
 
