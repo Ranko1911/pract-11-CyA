@@ -63,113 +63,62 @@ BigInt Karatsuba::multiply(BigInt x, BigInt y) {
   int n = Length(x);
   int m = Length(y);
   int k = max(n, m);
-
   BigInt diez(10);
-
   if (k == 1) {
     result = x * y;
     return result;
   }
   BigInt half;
   half = k / 2;
-  
-  std::cout << "--------------- abrir -----------------" << std::endl;
-
+  // std::cout << "--------------- abrir -----------------" << std::endl;
   a = (x / (diez^half));
   c = (y / (diez^half));
-  std::cout << "a: " << a << std::endl;
-  std::cout << "c: " << c << std::endl;
-
+  // std::cout << "a: " << a << std::endl;
+  // std::cout << "c: " << c << std::endl;
   b = (x % (diez^half));
   d = (y % (diez^half));
-  std::cout << "b: " << b << std::endl;
-  std::cout << "d: " << d << std::endl;
-
-  std::cout << "multilpliying a and c in ac" << std::endl;
+  // std::cout << "b: " << b << std::endl;
+  // std::cout << "d: " << d << std::endl;
+  // std::cout << "multilpliying a and c in ac" << std::endl;
   ac = multiply(a, c);  
-  std::cout << "ac: " << ac << std::endl;
-
-  std::cout << "multilpliying b and d in db" << std::endl;
+  // std::cout << "ac: " << ac << std::endl;
+  // std::cout << "multilpliying b and d in db" << std::endl;
   bd = multiply(b, d);  
-  std::cout << "bd: " << bd << std::endl;
-
-  std::cout << "adding a and b in a1" << std::endl;
+  // std::cout << "bd: " << bd << std::endl;
+  // std::cout << "adding a and b in a1" << std::endl;
   BigInt a1;
   a1 = a + b;  // a1 = a + b 
-  std::cout << "a1: " << a1 << std::endl;
-
-  std::cout << "adding c and d in c1" << std::endl;
+  // std::cout << "a1: " << a1 << std::endl;
+  // std::cout << "adding c and d in c1" << std::endl;
   BigInt c1;
   c1 = c + d;  // c1 = c + d 
-  std::cout << "c1: " << c1 << std::endl;
-
-
-  std::cout << "multilpliying a1 and c1 in abcd" << std::endl;
+  // std::cout << "c1: " << c1 << std::endl;
+  // std::cout << "multilpliying a1 and c1 in abcd" << std::endl;
   abcd = multiply(a1, c1); // abcd = a1 * c1 
-  std::cout << "abcd: " << abcd << std::endl;
-
-
-  std::cout << "subtracting ac and bd in a2" << std::endl;
+  // std::cout << "abcd: " << abcd << std::endl;
+  // std::cout << "subtracting ac and bd in a2" << std::endl;
   BigInt a2;
   a2 = abcd - ac;  // a2 = abcd - ac 
-  std::cout << "a2: " << a2 << std::endl;
-
-  std::cout << "subtracting a2 and bd in adbc" << std::endl;
+  // std::cout << "a2: " << a2 << std::endl;
+  // std::cout << "subtracting a2 and bd in adbc" << std::endl;
   adbc = a2 - bd; // adbc = a2 - bd 
-  std::cout << "adbc: " << adbc << std::endl;
-
-  std::cout << " insert 0s in ac" << std::endl;
+  // std::cout << "adbc: " << adbc << std::endl;
+  // std::cout << " insert 0s in ac" << std::endl;
   ac = ac * (diez^half * 2);
   // ac.digits.insert( ac.digits.begin() , 2 * half, '0' - '0'); // ac = ac * 10^2half // '0' - '0' = 0
-  std::cout << "ac: " << ac << std::endl;
-
-  std::cout << " insert 0s in adbc" << std::endl;
+  // std::cout << "ac: " << ac << std::endl;
+  // std::cout << " insert 0s in adbc" << std::endl;
    adbc = adbc * (diez^half); // '0' - '0' = 0
   // adbc.digits.insert(adbc.digits.begin() , half, '0' - '0'); // adbc = adbc * 10^half // '0' - '0' = 0
-  std::cout << "adbc: " << adbc << std::endl;
-
-  std::cout << "adding ac and bd in a3" << std::endl;
+  // std::cout << "adbc: " << adbc << std::endl;
+  // std::cout << "adding ac and bd in a3" << std::endl;
   BigInt a3;
   a3 = ac + bd;  // a3 = ac + bd 
-  std::cout << "a3: " << a3 << std::endl;
-  
-  std::cout << "adding a3 and adbc in result" << std::endl;
+  // std::cout << "a3: " << a3 << std::endl;
+  // std::cout << "adding a3 and adbc in result" << std::endl;
   result = a3 + adbc; // result = a3 + adbc 
-  std::cout << "result: " << result << std::endl;
-  
-  std::cout << "--------------- cerrar -----------------" << std::endl;
+  // std::cout << "result: " << result << std::endl;
+  // std::cout << "--------------- cerrar -----------------" << std::endl;
 
   return result;
-  // BigInt a, b, c, d, ac, bd, abcd, adbc, result;
-  // int n = Length(x);
-  // int m = Length(y);
-  // int k = max(n, m);
-
-  // BigInt diez(10);
-  // if (k == 1) {
-  //   result = x * y;
-  //   return result;
-  // }
-  // int half;
-  // half = k / 2;
-  // a = (x / (diez^half));	// a = (x / std::pow(10,half));
-  // c = (y / (diez^half));  // c = (y / std::pow(10,half));
-  // b = (x % (diez^half));  // b = (x % std::pow(10,half));
-  // d = (y % (diez^half));  // d = (y % std::pow(10,half));
-  // ac = multiply(a, c);  
-  // bd = multiply(b, d);  
-  // BigInt a1;
-  // a1 = a + b;  // a1 = a + b 
-  // BigInt c1;
-  // c1 = c + d;  // c1 = c + d 
-  // abcd = multiply(a1, c1); // abcd = a1 * c1 
-  // BigInt a2;
-  // a2 = abcd - ac;  // a2 = abcd - ac 
-  // adbc = a2 - bd; // adbc = a2 - bd 
-  // ac.digits.insert( ac.digits.begin() , (int)(k), '0' - '0'); // ac = ac * 10^2half // '0' - '0' = 0
-  // adbc.digits.insert(adbc.digits.begin() , (int)(k/2), '0' - '0'); // adbc = adbc * 10^half // '0' - '0' = 0
-  // BigInt a3;
-  // a3 = ac + bd;  // a3 = ac + bd 
-  // result = a3 + adbc; // result = a3 + adbc 
-  // return result;
 }
