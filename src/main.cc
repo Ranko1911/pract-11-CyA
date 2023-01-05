@@ -35,25 +35,59 @@ int main(int argc, char *argv[]) {
   } else if (argc == 2) {
     std::cout << "No se ha introducido suficientes argumentos " << std::endl;
   } else if (argc == 3) {
-    auto start = high_resolution_clock::now();
-    file_manager.ReadFile(argv[1]);
-    std::string primer_fichero = file_manager.GetContent();
-    file_manager.SetContent("");
+    if (strcmp(argv[1], "-r") == 0) {
+      // std::cout << "Primer argumento: " << argv[1] << std::endl;
+      // std::cout << "Segundo argumento: " << argv[2] << std::endl;
 
-    file_manager.ReadFile(argv[2]);
-    std::string segundo_fichero = file_manager.GetContent();
-    file_manager.SetContent("");
+      // generar un numero aleatorio dado el numero de digitos
+      auto start = high_resolution_clock::now();
 
-    BigInt first(primer_fichero);
-    BigInt second(segundo_fichero);
+      int num_digitos = std::stoi(argv[2]);
+      std::cout << "num_digitos: " << num_digitos << std::endl;
+      std::string primer_numero = "";
+      std::string segundo_numero = "";
+      for (int i = 0; i < num_digitos; i++) {
+        int random = rand() % 10;
+        primer_numero += std::to_string(random);
+      }
+      for (int i = 0; i < num_digitos; i++) {
+        int random = rand() % 10;
+        segundo_numero += std::to_string(random);
+      }
+      std::cout << "first: " << primer_numero << std::endl;
+      std::cout << "second: " << segundo_numero << std::endl;
 
-    temp = karatsuba.multiply(first, second);
-    auto stop = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(stop - start);
+      BigInt first(primer_numero);
+      BigInt second(segundo_numero);
 
-    std::cout << "first * second = " << temp << std::endl;
-    std::cout << "Time taken by function: " << duration.count()
-              << " microseconds" << std::endl;
+      temp = karatsuba.multiply(first, second);
+      auto stop = high_resolution_clock::now();
+      auto duration = duration_cast<microseconds>(stop - start);
+
+      std::cout << "first * second = " << temp << std::endl;
+      std::cout << "Time taken by function: " << duration.count()
+                << " microseconds" << std::endl;
+    } else {
+      auto start = high_resolution_clock::now();
+      file_manager.ReadFile(argv[1]);
+      std::string primer_fichero = file_manager.GetContent();
+      file_manager.SetContent("");
+
+      file_manager.ReadFile(argv[2]);
+      std::string segundo_fichero = file_manager.GetContent();
+      file_manager.SetContent("");
+
+      BigInt first(primer_fichero);
+      BigInt second(segundo_fichero);
+
+      temp = karatsuba.multiply(first, second);
+      auto stop = high_resolution_clock::now();
+      auto duration = duration_cast<microseconds>(stop - start);
+
+      std::cout << "first * second = " << temp << std::endl;
+      std::cout << "Time taken by function: " << duration.count()
+                << " microseconds" << std::endl;
+    }
   } else if (argc == 4) {
     if (strcmp(argv[1], "-k") == 0) {
       auto start = high_resolution_clock::now();
@@ -116,7 +150,8 @@ int main(int argc, char *argv[]) {
       BigInt first(primer_fichero);
       BigInt second(segundo_fichero);
 
-      if (primer_fichero.length() < atoi(argv[2]) && segundo_fichero.length() < atoi(argv[2])) {
+      if (primer_fichero.length() < atoi(argv[2]) &&
+          segundo_fichero.length() < atoi(argv[2])) {
         temp = first * second;
         std::cout << "Menor que " << atoi(argv[2]) << std::endl;
       } else {
@@ -130,7 +165,7 @@ int main(int argc, char *argv[]) {
       std::cout << "Time taken by function: " << duration.count()
                 << " microseconds" << std::endl;
 
-    }else {
+    } else {
       cout << "Argumento no valido" << endl;
     }
   } else {
