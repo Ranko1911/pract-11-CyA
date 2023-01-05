@@ -97,6 +97,42 @@ int main(int argc, char *argv[]) {
     } else {
       cout << "Argumento no valido" << endl;
     }
+  } else if (argc == 5) {
+    if (strcmp(argv[1], "-n") == 0) {
+      // std::cout << "Argumento 1: " << argv[1] << std::endl;
+      // std::cout << "Argumento 2: " << argv[2] << std::endl;
+      // std::cout << "Argumento 3: " << argv[3] << std::endl;
+      // std::cout << "Argumento 4: " << argv[4] << std::endl;
+
+      auto start = high_resolution_clock::now();
+      file_manager.ReadFile(argv[3]);
+      std::string primer_fichero = file_manager.GetContent();
+      file_manager.SetContent("");
+
+      file_manager.ReadFile(argv[4]);
+      std::string segundo_fichero = file_manager.GetContent();
+      file_manager.SetContent("");
+
+      BigInt first(primer_fichero);
+      BigInt second(segundo_fichero);
+
+      if (primer_fichero.length() < atoi(argv[2]) && segundo_fichero.length() < atoi(argv[2])) {
+        temp = first * second;
+        std::cout << "Menor que " << atoi(argv[2]) << std::endl;
+      } else {
+        temp = karatsuba.multiply(first, second);
+        std::cout << "Mayor que " << atoi(argv[2]) << std::endl;
+      }
+
+      auto stop = high_resolution_clock::now();
+      auto duration = duration_cast<microseconds>(stop - start);
+      std::cout << "first * second = " << temp << std::endl;
+      std::cout << "Time taken by function: " << duration.count()
+                << " microseconds" << std::endl;
+
+    }else {
+      cout << "Argumento no valido" << endl;
+    }
   } else {
     std::cout << "Demasiados argumentos" << std::endl;
   }
