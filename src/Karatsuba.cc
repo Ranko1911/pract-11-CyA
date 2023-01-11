@@ -4,6 +4,13 @@ Karatsuba::Karatsuba() {}
 
 Karatsuba::~Karatsuba() {}
 
+/**
+ * @brief 
+ * 
+ * @param x 
+ * @param y 
+ * @return BigInt 
+ */
 BigInt Karatsuba::add(BigInt x, BigInt y) {
   BigInt result;
   int carry = 0;
@@ -26,6 +33,13 @@ BigInt Karatsuba::add(BigInt x, BigInt y) {
   return result;
 }
 
+/**
+ * @brief 
+ * 
+ * @param x 
+ * @param y 
+ * @return BigInt 
+ */
 BigInt Karatsuba::subtract(BigInt x, BigInt y) {
   BigInt result;
   int carry = 0;
@@ -57,7 +71,13 @@ BigInt Karatsuba::subtract(BigInt x, BigInt y) {
   return result;
 }
 
-// algoritmo de multiplicacion recursivo de karatsuba
+/**
+ * @brief 
+ * 
+ * @param x 
+ * @param y 
+ * @return BigInt 
+ */
 BigInt Karatsuba::multiply(BigInt x, BigInt y) { 
    BigInt a, b, c, d, ac, bd, abcd, adbc, result;
   int n = Length(x);

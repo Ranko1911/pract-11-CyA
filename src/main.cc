@@ -11,17 +11,6 @@
 
 using namespace std::chrono;
 
-int main2(int argc, char *argv[]) {
-  std::string first_("12345678");
-  std::string second_("87654321");
-  BigInt first(first_);
-  BigInt second(second_);
-  Karatsuba karatsuba;
-  BigInt temp;
-  temp = karatsuba.multiply(first, second);
-  std::cout << "first * second = " << temp << std::endl;
-  return 0;
-}
 
 int main(int argc, char *argv[]) {
   Karatsuba karatsuba;

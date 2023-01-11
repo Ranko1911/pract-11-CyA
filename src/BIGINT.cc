@@ -1,5 +1,10 @@
 #include "BIGINT.h"
 
+/**
+ * @brief Construct a new Big Int:: Big Int object
+ * 
+ * @param s 
+ */
 BigInt::BigInt(string &s) {
   digits = "";
   int n = s.size();
@@ -9,6 +14,11 @@ BigInt::BigInt(string &s) {
   }
 }
 
+/**
+ * @brief Construct a new Big Int:: Big Int object
+ * 
+ * @param nr 
+ */
 BigInt::BigInt(unsigned long long nr) {
   do {
     digits.push_back(nr % 10);
@@ -16,6 +26,11 @@ BigInt::BigInt(unsigned long long nr) {
   } while (nr);
 }
 
+/**
+ * @brief Construct a new Big Int:: Big Int object
+ * 
+ * @param s 
+ */
 BigInt::BigInt(const char *s) {
   digits = "";
   for (int i = strlen(s) - 1; i >= 0; i--) {
@@ -24,26 +39,74 @@ BigInt::BigInt(const char *s) {
   }
 }
 
+/**
+ * @brief Construct a new Big Int:: Big Int object
+ * 
+ * @param a 
+ */
 BigInt::BigInt(BigInt &a) { digits = a.digits; }
 
+/**
+ * @brief 
+ * 
+ * @param a 
+ * @return true 
+ * @return false 
+ */
 bool Null(const BigInt &a) {
   if (a.digits.size() == 1 && a.digits[0] == 0) return true;
   return false;
 }
 
+/**
+ * @brief 
+ * 
+ * @param a 
+ * @return int 
+ */
 int Length(const BigInt &a) { return a.digits.size(); }
 
+/**
+ * @brief 
+ * 
+ * @param index 
+ * @return int 
+ */
 int BigInt::operator[](const int index) const {
   if (digits.size() <= index || index < 0) throw("ERROR");
   return digits[index];
 }
 
+/**
+ * @brief 
+ * 
+ * @param a 
+ * @param b 
+ * @return true 
+ * @return false 
+ */
 bool operator==(const BigInt &a, const BigInt &b) {
   return a.digits == b.digits;
 }
 
+/**
+ * @brief 
+ * 
+ * @param a 
+ * @param b 
+ * @return true 
+ * @return false 
+ */
 bool operator!=(const BigInt &a, const BigInt &b) { return !(a == b); }
 
+/**
+ * @brief 
+ * 
+ * @param a 
+ * @param b 
+ * @return true 
+ * @return false 
+ */
 bool operator<(const BigInt &a, const BigInt &b) {
   int n = Length(a), m = Length(b);
   if (n != m) return n < m;
@@ -52,17 +115,52 @@ bool operator<(const BigInt &a, const BigInt &b) {
   return false;
 }
 
+/**
+ * @brief 
+ * 
+ * @param a 
+ * @param b 
+ * @return true 
+ * @return false 
+ */
 bool operator>(const BigInt &a, const BigInt &b) { return b < a; }
 
+/**
+ * @brief 
+ * 
+ * @param a 
+ * @param b 
+ * @return true 
+ * @return false 
+ */
 bool operator>=(const BigInt &a, const BigInt &b) { return !(a < b); }
 
+/**
+ * @brief 
+ * 
+ * @param a 
+ * @param b 
+ * @return true 
+ * @return false 
+ */
 bool operator<=(const BigInt &a, const BigInt &b) { return !(a > b); }
 
+/**
+ * @brief 
+ * 
+ * @param a 
+ * @return BigInt& 
+ */
 BigInt &BigInt::operator=(const BigInt &a) {
   digits = a.digits;
   return *this;
 }
 
+/**
+ * @brief 
+ * 
+ * @return BigInt& 
+ */
 BigInt &BigInt::operator++() {
   int i, n = digits.size();
   for (i = 0; i < n && digits[i] == 9; i++) digits[i] = 0;
@@ -73,6 +171,12 @@ BigInt &BigInt::operator++() {
   return *this;
 }
 
+/**
+ * @brief 
+ * 
+ * @param temp 
+ * @return BigInt 
+ */
 BigInt BigInt::operator++(int temp) {
   BigInt aux;
   aux = *this;
@@ -80,6 +184,11 @@ BigInt BigInt::operator++(int temp) {
   return aux;
 }
 
+/**
+ * @brief 
+ * 
+ * @return BigInt& 
+ */
 BigInt &BigInt::operator--() {
   if (digits[0] == 0 && digits.size() == 1) throw("UNDERFLOW");
   int i, n = digits.size();
@@ -89,6 +198,12 @@ BigInt &BigInt::operator--() {
   return *this;
 }
 
+/**
+ * @brief 
+ * 
+ * @param temp 
+ * @return BigInt 
+ */
 BigInt BigInt::operator--(int temp) {
   BigInt aux;
   aux = *this;
@@ -96,6 +211,13 @@ BigInt BigInt::operator--(int temp) {
   return aux;
 }
 
+/**
+ * @brief 
+ * 
+ * @param a 
+ * @param b 
+ * @return BigInt& 
+ */
 BigInt &operator+=(BigInt &a, const BigInt &b) {
   int t = 0, s, i;
   int n = Length(a), m = Length(b);
@@ -113,13 +235,26 @@ BigInt &operator+=(BigInt &a, const BigInt &b) {
   return a;
 }
 
+/**
+ * @brief 
+ * 
+ * @param a 
+ * @param b 
+ * @return BigInt 
+ */
 BigInt operator+(const BigInt &a, const BigInt &b) {
   BigInt temp;
   temp = a;
   temp += b;
   return temp;
 }
-
+/**
+ * @brief 
+ * 
+ * @param a 
+ * @param b 
+ * @return BigInt& 
+ */
 BigInt &operator-=(BigInt &a, const BigInt &b) {
   if (a < b) throw("UNDERFLOW");
   int n = Length(a), m = Length(b);
@@ -139,13 +274,26 @@ BigInt &operator-=(BigInt &a, const BigInt &b) {
   return a;
 }
 
+/**
+ * @brief 
+ * 
+ * @param a 
+ * @param b 
+ * @return BigInt 
+ */
 BigInt operator-(const BigInt &a, const BigInt &b) {
   BigInt temp;
   temp = a;
   temp -= b;
   return temp;
 }
-
+/**
+ * @brief 
+ * 
+ * @param a 
+ * @param b 
+ * @return BigInt& 
+ */
 BigInt &operator*=(BigInt &a, const BigInt &b) {
   if (Null(a) || Null(b)) {
     a = BigInt();
@@ -168,14 +316,26 @@ BigInt &operator*=(BigInt &a, const BigInt &b) {
   for (int i = n - 1; i >= 1 && !v[i]; i--) a.digits.pop_back();
   return a;
 }
-
+/**
+ * @brief 
+ * 
+ * @param a 
+ * @param b 
+ * @return BigInt 
+ */
 BigInt operator*(const BigInt &a, const BigInt &b) {
   BigInt temp;
   temp = a;
   temp *= b;
   return temp;
 }
-
+/**
+ * @brief 
+ * 
+ * @param a 
+ * @param b 
+ * @return BigInt& 
+ */
 BigInt &operator/=(BigInt &a, const BigInt &b) {
   if (Null(b)) throw("Arithmetic Error: Division By 0");
   if (a < b) {
@@ -206,14 +366,26 @@ BigInt &operator/=(BigInt &a, const BigInt &b) {
   a.digits.resize(lgcat);
   return a;
 }
-
+/**
+ * @brief 
+ * 
+ * @param a 
+ * @param b 
+ * @return BigInt 
+ */
 BigInt operator/(const BigInt &a, const BigInt &b) {
   BigInt temp;
   temp = a;
   temp /= b;
   return temp;
 }
-
+/**
+ * @brief 
+ * 
+ * @param a 
+ * @param b 
+ * @return BigInt& 
+ */
 BigInt &operator%=(BigInt &a, const BigInt &b) {
   if (Null(b)) throw("Arithmetic Error: Division By 0");
   if (a < b) {
@@ -242,6 +414,13 @@ BigInt &operator%=(BigInt &a, const BigInt &b) {
   return a;
 }
 
+/**
+ * @brief 
+ * 
+ * @param a 
+ * @param b 
+ * @return BigInt 
+ */
 BigInt operator%(const BigInt &a, const BigInt &b) {
   BigInt temp;
   temp = a;
@@ -249,6 +428,13 @@ BigInt operator%(const BigInt &a, const BigInt &b) {
   return temp;
 }
 
+/**
+ * @brief 
+ * 
+ * @param a 
+ * @param b 
+ * @return BigInt& 
+ */
 BigInt &operator^=(BigInt &a, const BigInt &b) {
   BigInt Exponent, Base(a);
   Exponent = b;
@@ -261,12 +447,24 @@ BigInt &operator^=(BigInt &a, const BigInt &b) {
   return a;
 }
 
+/**
+ * @brief 
+ * 
+ * @param a 
+ * @param b 
+ * @return BigInt 
+ */
 BigInt operator^(BigInt &a, const BigInt &b) {
   BigInt temp(a);
   temp ^= b;
   return temp;
 }
 
+/**
+ * @brief 
+ * 
+ * @param a 
+ */
 void divide_by_2(BigInt &a) {
   int add = 0;
   for (int i = a.digits.size() - 1; i >= 0; i--) {
@@ -277,6 +475,12 @@ void divide_by_2(BigInt &a) {
   while (a.digits.size() > 1 && !a.digits.back()) a.digits.pop_back();
 }
 
+/**
+ * @brief 
+ * 
+ * @param a 
+ * @return BigInt 
+ */
 BigInt sqrt(BigInt &a) {
   BigInt left(1), right(a), v(1), mid, prod;
   divide_by_2(right);
@@ -298,6 +502,13 @@ BigInt sqrt(BigInt &a) {
   return v;
 }
 
+/**
+ * @brief a
+ * 
+ * @param in 
+ * @param a 
+ * @return istream& 
+ */
 istream &operator>>(istream &in, BigInt &a) {
   string s;
   in >> s;
@@ -309,6 +520,13 @@ istream &operator>>(istream &in, BigInt &a) {
   return in;
 }
 
+/**
+ * @brief 
+ * 
+ * @param out 
+ * @param a 
+ * @return ostream& 
+ */
 ostream &operator<<(ostream &out, const BigInt &a) {
   for (int i = a.digits.size() - 1; i >= 0; i--) cout << (short)a.digits[i];
   return cout;
