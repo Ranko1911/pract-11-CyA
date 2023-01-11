@@ -1,0 +1,12 @@
+el make normal hace que el programa se ejecute con entrada por primer_fichero
+
+tomar esta linea como ejemplo:
+
+./programa ejemplos/n1.dat ejemplos/n2.dat
+
+
+El make2 hace que funcione con la linea que quiere el profe
+
+tomar esta linea de ejemplo:
+
+cat ejemplos/n1.dat ejemplos/n2.dat | ./programa2 | diff - ejemplos/n1_x_n2.dat
