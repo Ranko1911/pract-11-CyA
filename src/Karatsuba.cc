@@ -83,6 +83,7 @@ BigInt Karatsuba::multiply(BigInt x, BigInt y) {
   int n = Length(x);
   int m = Length(y);
   int k = max(n, m);
+  contador++;
   BigInt diez(10);
   if (k == 1) {
     result = x * y;
@@ -142,3 +143,6 @@ BigInt Karatsuba::multiply(BigInt x, BigInt y) {
 
   return result;
 }
+
+
+int Karatsuba::getContador() { return contador;}

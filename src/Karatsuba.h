@@ -12,6 +12,7 @@ using namespace std;
 
 // clase que implemente el algoritmo de karatsuba
 class Karatsuba {
+  int contador = 0;
   public:
     Karatsuba();
     ~Karatsuba();
@@ -19,4 +20,5 @@ class Karatsuba {
     // BigInt multiplicacion(BigInt x, BigInt y);
     BigInt add(BigInt x, BigInt y);
     BigInt subtract(BigInt x, BigInt y);
+    int getContador();
 };
